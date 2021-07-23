@@ -9,16 +9,6 @@ export default function Home() {
 
   return (
     <div className={styles.container}>
-      <h2>HOME (Show featured events)</h2>
-      <Link href="/">
-        <a>Home</a>
-      </Link>
-      
-      <Link href="/events">
-        <a>All Events</a>
-      </Link>
-
-      <h3>Featured Events by ID</h3>
       <EventList items={featuredEvents} />
     </div>
   )

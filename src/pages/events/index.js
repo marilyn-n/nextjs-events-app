@@ -1,11 +1,14 @@
 import React from 'react';
 import Link from 'next/link'
+import { getAllEvents } from '../../../dummy-data';
+import EventList from '../../components/events/EventList';
 
 const AllEvents = () => {
+    const events = getAllEvents();
+
     return (
         <div>
-            <h2>Events Page(Show all events)</h2>
-            <Link href='/'>Home</Link>
+            <EventList items={events}/>
         </div>
     );
 }
