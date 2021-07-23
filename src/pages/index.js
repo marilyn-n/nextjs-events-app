@@ -1,8 +1,12 @@
 
 import styles from '../styles/Home.module.css'
 import Link from 'next/link'
+import {getFeaturedEvents} from '../../dummy-data';
+import EventList from '../components/events/EventList';
 
 export default function Home() {
+  const featuredEvents = getFeaturedEvents();
+
   return (
     <div className={styles.container}>
       <h2>HOME (Show featured events)</h2>
@@ -15,15 +19,7 @@ export default function Home() {
       </Link>
 
       <h3>Featured Events by ID</h3>
-      <Link href="/events/1">
-        <a>Featured 1</a>
-      </Link>
-      <Link href="/events/2">
-        <a>Featured 2</a>
-      </Link>
-      <Link href="/events/3">
-        <a>Featured 3</a>
-      </Link>
+      <EventList items={featuredEvents} />
     </div>
   )
 }
