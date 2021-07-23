@@ -1,17 +1,28 @@
 import React from 'react';
 import { useRouter } from 'next/router'
-import Link from 'next/link';
+import { Fragment } from 'react';
+import { getEventById } from '../../../dummy-data';
+import EventSummary from '../../components/events/EventSummary';
+import EventLogistics from '../../components/events/EventLogistics';
+import EventContent from '../../components/events/EventContent';
 
 const EventId = () => {
     const router = useRouter()
-    const routeId = router.query.eventId;
+    const eventId = router.query.eventId;
+    const event = getEventById(eventId);
+
+    if(!event) {
+        return <p>no event found</p>
+    }
 
     return (
-        <div>
-            <h2>Event Detail Page ({routeId})</h2>
-            <Link href='/'>Home</Link>
-            <Link href='/events'>All Events</Link>
-        </div>
+        <Fragment>
+            <EventSummary title={event.title}/>
+            <EventLogistics date={event.date} address={event.location} image={event.image} imageAlt={event.title} />
+            <EventContent>
+                <p>{event.description}</p>
+            </EventContent>
+        </Fragment>
     );
 }
 

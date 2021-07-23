@@ -18,6 +18,7 @@ const DUMMY_EVENTS = [
     date: '2021-05-30',
     image: 'images/introvert-event.jpg',
     isFeatured: true,
+    
   },
   {
     id: 'e3',
