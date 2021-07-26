@@ -8,9 +8,6 @@ const EventFilteredId = () => {
 
     return (
         <div>
-            <h2>Event Filterd Details Page ({routeId})</h2>
-            <Link href='/'>Home</Link>
-            <Link href='/events'>All Events</Link>
         </div>
     );
 }
