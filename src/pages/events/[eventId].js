@@ -1,17 +1,14 @@
 import React from "react";
-import { useRouter } from "next/router";
 import { Fragment } from "react";
-import { getEventById } from "../../../dummy-data";
+import { getEventById } from '../../helpers/api-ultils';
 import EventSummary from "../../components/events/EventSummary";
 import EventLogistics from "../../components/events/EventLogistics";
 import EventContent from "../../components/events/EventContent";
 import ErrorAlert from "../../components/ui/alert/ErrorAlert";
 import Button from "../../components/ui/buttons/button";
 
-const EventId = () => {
-  const router = useRouter();
-  const eventId = router.query.eventId;
-  const event = getEventById(eventId);
+function EventId(props) {
+  const event = props.selectedEvent;
 
   if (!event) {
     return (
@@ -41,5 +38,16 @@ const EventId = () => {
     </Fragment>
   );
 };
+
+export async function getStaticProps(context) {
+  const eventId = context.params.eventId;
+  const event = getEventById(eventId);
+
+  return {
+    props: {
+      selectedEvent: event
+    }
+  }
+}
 
 export default EventId;
